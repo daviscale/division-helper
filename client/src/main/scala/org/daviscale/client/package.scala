@@ -1,4 +1,4 @@
-package spatutorial
+package org.daviscale
 
 package object client {
 

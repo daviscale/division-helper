@@ -8,13 +8,12 @@ import org.daviscale.client.logger._
 import org.daviscale.client.modules._
 import org.daviscale.client.services.SPACircuit
 
-import scala.scalajs.js
 import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
 import CssSettings._
 import scalacss.ScalaCssReact._
 
 @JSExportTopLevel("SPAMain")
-object SPAMain extends js.JSApp {
+object SPAMain {
 
   // Define the locations (pages) used in this application
   sealed trait Loc
@@ -31,7 +30,7 @@ object SPAMain extends js.JSApp {
     // wrap/connect components to the circuit
     (staticRoute(root, DashboardLoc) ~> renderR(ctl => SPACircuit.wrap(_.motd)(proxy => Dashboard(ctl, proxy)))
       | staticRoute("#todo", TodoLoc) ~> renderR(ctl => todoWrapper(Todo(_)))
-      ).notFound(redirectToPage(DashboardLoc)(Redirect.Replace))
+      ).notFound(redirectToPage(DashboardLoc)(SetRouteVia.HistoryReplace))
   }.renderWith(layout)
 
   val todoCountWrapper = SPACircuit.connect(_.todos.map(_.items.count(!_.completed)).toOption)
@@ -54,7 +53,7 @@ object SPAMain extends js.JSApp {
   }
 
   @JSExport
-  def main(): Unit = {
+  def main(args: Array[String]): Unit = {
     log.warn("Application starting")
     // send log messages also to the server
     log.enableServerLogging("/logging")

@@ -9,7 +9,6 @@ import org.daviscale.client.SPAMain.{Loc, TodoLoc}
 import org.daviscale.client.components._
 
 import scala.util.Random
-import scala.language.existentials
 
 object Dashboard {
 

@@ -9,7 +9,7 @@ import org.daviscale.client.components.Bootstrap._
 import org.daviscale.client.components._
 import org.daviscale.client.logger._
 import org.daviscale.client.services._
-import spatutorial.shared._
+import org.daviscale.shared._
 
 import scalacss.ScalaCssReact._
 

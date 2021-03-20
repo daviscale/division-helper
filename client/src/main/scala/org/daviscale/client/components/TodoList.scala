@@ -3,7 +3,7 @@ package org.daviscale.client.components
 import japgolly.scalajs.react._
 import japgolly.scalajs.react.vdom.html_<^._
 import org.daviscale.client.components.Bootstrap.{CommonStyle, Button}
-import spatutorial.shared._
+import org.daviscale.shared._
 import scalacss.ScalaCssReact._
 
 object TodoList {

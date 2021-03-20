@@ -5,7 +5,7 @@ import diode._
 import diode.data._
 import diode.util._
 import diode.react.ReactConnector
-import spatutorial.shared.{TodoItem, Api}
+import org.daviscale.shared.{TodoItem, Api}
 import boopickle.Default._
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 
