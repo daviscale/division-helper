@@ -3,11 +3,11 @@ package controllers
 import java.nio.ByteBuffer
 
 import boopickle.Default._
-import com.google.inject.Inject
+import javax.inject._
 import play.api.{Configuration, Environment}
 import play.api.mvc._
 import services.ApiService
-import spatutorial.shared.Api
+import org.daviscale.shared.Api
 
 import scala.concurrent.ExecutionContext.Implicits.global
 
@@ -16,7 +16,11 @@ object Router extends autowire.Server[ByteBuffer, Pickler, Pickler] {
   override def write[R: Pickler](r: R) = Pickle.intoBytes(r)
 }
 
-class Application @Inject() (implicit val config: Configuration, env: Environment) extends Controller {
+class Application @Inject()(
+  val controllerComponents: ControllerComponents,
+  implicit val config: Configuration,
+  implicit val env: Environment
+) extends BaseController {
   val apiService = new ApiService()
 
   def index = Action {
