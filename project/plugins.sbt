@@ -14,3 +14,5 @@ addSbtPlugin("com.vmunier" % "sbt-web-scalajs" % "1.1.0")
 addSbtPlugin("com.typesafe.sbt" % "sbt-digest" % "1.1.3")
 
 addSbtPlugin("com.typesafe.sbt" % "sbt-gzip" % "1.0.2")
+
+addSbtPlugin("ch.epfl.scala" % "sbt-scalajs-bundler" % "0.20.0")

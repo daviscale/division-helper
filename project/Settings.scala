@@ -32,7 +32,7 @@ object Settings {
     val booPickle = "1.3.2"
     val diode = "1.1.14"
 
-    val react = "16.1.0"
+    val react = "16.13.1"
     val jQuery = "3.6.0"
     val bootstrap = "4.6.0"
     val chartjs = "2.9.4"

@@ -29,6 +29,14 @@ lazy val client: Project = (project in file("client"))
     version := Settings.version,
     scalaVersion := Settings.versions.scala,
     scalacOptions ++= Settings.scalacOptions,
+    npmDependencies in Compile ++= Seq(
+      "react" -> Settings.versions.react,
+      "react-dom" -> Settings.versions.react,
+      "jquery" -> Settings.versions.jQuery,
+      "bootstrap" -> Settings.versions.bootstrap,
+      "chartjs" -> Settings.versions.chartjs,
+      "log4javascript" -> Settings.versions.log4js
+    ),
     libraryDependencies ++= Seq(
       "com.github.japgolly.scalajs-react" %%% "core" % Settings.versions.scalajsReact,
       "com.github.japgolly.scalajs-react" %%% "extra" % Settings.versions.scalajsReact,
@@ -40,14 +48,6 @@ lazy val client: Project = (project in file("client"))
     // by default we do development build, no eliding
     elideOptions := Seq(),
     scalacOptions ++= elideOptions.value,
-    jsDependencies ++= Seq(
-      "org.webjars.bower" % "react" % Settings.versions.react / "react-with-addons.js" minified "react-with-addons.min.js" commonJSName "React",
-      "org.webjars.bower" % "react" % Settings.versions.react / "react-dom.js" minified "react-dom.min.js" dependsOn "react-with-addons.js" commonJSName "ReactDOM",
-      "org.webjars" % "jquery" % Settings.versions.jQuery / "jquery.js" minified "jquery.min.js",
-      "org.webjars" % "bootstrap" % Settings.versions.bootstrap / "bootstrap.js" minified "bootstrap.min.js" dependsOn "jquery.js",
-      "org.webjars" % "chartjs" % Settings.versions.chartjs / "Chart.js" minified "Chart.min.js",
-      "org.webjars" % "log4javascript" % Settings.versions.log4js / "js/log4javascript_uncompressed.js" minified "js/log4javascript.js"
-    ),
     // yes, we want to package JS dependencies
     skip in packageJSDependencies := false,
     // use Scala.js provided launcher code to start the client app
@@ -56,7 +56,7 @@ lazy val client: Project = (project in file("client"))
     // use uTest framework for tests
     testFrameworks += new TestFramework("utest.runner.Framework")
   )
-  .enablePlugins(ScalaJSPlugin, ScalaJSWeb)
+  .enablePlugins(ScalaJSPlugin, ScalaJSBundlerPlugin, ScalaJSWeb)
   .dependsOn(sharedJS)
 
 // Client projects (just one in this case)
