@@ -34,7 +34,7 @@ object Settings {
 
     val react = "16.13.1"
     val jQuery = "3.6.0"
-    val bootstrap = "4.6.0"
+    val bootstrap = "3.3.4"
     val chartjs = "2.9.4"
 
     val scalajsScripts = "1.1.4"
