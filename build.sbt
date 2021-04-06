@@ -74,6 +74,7 @@ lazy val server = (project in file("server"))
       "org.webjars" % "font-awesome" % "4.3.0-1" % Provided,
       "org.webjars" % "bootstrap" % Settings.versions.bootstrap % Provided
     ),
+    libraryDependencies += guice,
     commands += ReleaseCmd,
     // triggers scalaJSPipeline when using compile or continuous compilation
     compile in Compile := ((compile in Compile) dependsOn scalaJSPipeline).value,
